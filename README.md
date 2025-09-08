@@ -48,13 +48,20 @@ git clone https://github.com/mousavikahaki/HistoART.git
 cd HistoArt
 ```
 
-Create a virtual environment and install dependencies from the provided `requirements.txt`:
+These instructions have been adapted for use with **Conda**. The following steps create a Conda environment and install all dependencies from the provided `requirements.txt` file.
 
 ```bash
-python3 -m venv histoart_env
-source histoart_env/bin/activate
+# Create a new Conda environment with Python 3.11 (required by dependencies)
+conda create --name histoart_env python=3.11
+
+# Activate the new environment
+conda activate histoart_env
+
+# Install all required packages using pip
 pip install -r requirements.txt
 ```
+
+**Note on the Modified `requirements.txt` File:** The `requirements.txt` file within this submodule has been modified from the original version to ensure compatibility with non-NVIDIA systems (e.g., macOS). The original file contained NVIDIA-specific packages (CUDA drivers) which have been removed. Additionally, the fixed versions for `torch` and `torchvision` were removed to allow `pip` to automatically install the correct, platform-specific versions that can leverage Apple's Metal Performance Shaders (MPS). The file in its current state is ready for a successful installation on this system.
 
 **Tested Environment:**
 - Linux (Ubuntu 22.04 LTS recommended)
