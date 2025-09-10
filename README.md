@@ -48,6 +48,24 @@ git clone https://github.com/mousavikahaki/HistoART.git
 cd HistoArt
 ```
 
+This project uses **Git LFS (Large File Storage)** to manage the large model files. These steps are crucial to replace the small text pointers with the actual model data.
+
+```bash
+# Navigate into the cloned repository
+cd HistoArt
+
+# First, ensure Git LFS is installed on your system.
+# On macOS, this can be done with Homebrew: brew install git-lfs
+
+# Activate Git LFS for this specific repository (only needs to be done once)
+git lfs install
+
+# Download the large model files from the LFS server
+git lfs pull
+```
+
+After running `git lfs pull`, you should see the model files in the `./models` directory with their full size (many megabytes), not just a few kilobytes.
+
 These instructions have been adapted for use with **Conda**. The following steps create a Conda environment and install all dependencies from the provided `requirements.txt` file.
 
 ```bash
@@ -61,7 +79,7 @@ conda activate histoart_env
 pip install -r requirements.txt
 ```
 
-**Note on the Modified `requirements.txt` File:** The `requirements.txt` file within this submodule has been modified from the original version to ensure compatibility with non-NVIDIA systems (e.g., macOS). The original file contained NVIDIA-specific packages (CUDA drivers) which have been removed. Additionally, the fixed versions for `torch` and `torchvision` were removed to allow `pip` to automatically install the correct, platform-specific versions that can leverage Apple's Metal Performance Shaders (MPS). The file in its current state is ready for a successful installation on this system.
+**Note on the Modified `requirements.txt` File:** The `requirements.txt` file within this submodule has been modified from the original version to ensure compatibility with non-NVIDIA systems (e.g., macOS). The original file contained NVIDIA-specific packages (CUDA drivers) which have been removed. Additionally, the fixed versions for `torch` and `torchvision` were removed to allow `pip` to automatically install the correct, platform-specific versions that can leverage Apple's Metal Performance Shaders (MPS).
 
 **Tested Environment:**
 - Linux (Ubuntu 22.04 LTS recommended)
