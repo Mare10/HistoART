@@ -135,7 +135,7 @@ def runFMA(dataloader, device, model):
     """
 
     fma_model = setup_uni_model()
-    fma_model.load_state_dict(torch.load(model, map_location=device))
+    fma_model.load_state_dict(torch.load(model, map_location=device, weights_only=False))
     fma_model.to(device)
     fma_model.eval()
 
